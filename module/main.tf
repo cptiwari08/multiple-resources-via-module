@@ -32,3 +32,18 @@ module "module_bastion" {
 #     source = "../database"
 
 # }
+
+module "module_lb" {
+    depends_on = [module.module_rg, module.module_vnet]
+    source = "../loadbalancer"
+    lb_map = var.module_rg
+    rg_map = var.module_rg
+    VM = var.module_vnet
+
+}
+
+module "module_stg" {
+    depends_on = [module.module_rg ]
+    source = "../Storageaccount"
+    sa = var.module_rg
+}
