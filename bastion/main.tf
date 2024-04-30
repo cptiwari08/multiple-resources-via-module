@@ -15,9 +15,9 @@ resource "azurerm_public_ip" "public-pip" {
   sku                 = each.value.sku
 }
 
-resource "azurerm_bastion_host" "bastion-host-block" {
+resource "azurerm_bastion_host" "bastionhost-block" {
   for_each = var.bastion_map
-  name                = "examplebastion"
+  name                = "test-bastion"
   location            = each.value.location
   resource_group_name = each.value.resource_group_name
 
